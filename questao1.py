@@ -7,24 +7,9 @@ def domain_input_zone_forward():
 	
 	dominio_input = raw_input("Insira o dominio: ")
 	
-	zone_forward = """\nzone """+dominio_input+""" IN { 
-	type master;
-	file "/var/named/"""+dominio_input+""".hosts";
-};"""
-
-	hosts_file = """$TTL 38400
-@	IN	SOA	projecto.pt. mail."""+dominio_input+""".(
-	100;
-	10800;
-	3600;
-	684000;
-	38400;
-	)
-IN	NS	projecto.pt.
-IN	A	127.0.0.1"""
-
-	resolv_dns_file = """search trabalho.pt
-nameserver 127.0.0.1"""
+	zone_forward = '\nzone '+dominio_input+' IN { \n	type master;\n	file "/var/named/'+dominio_input+'.hosts";\n};'
+	hosts_file = '$TTL 38400\n@	IN	SOA	projecto.pt. mail.'+dominio_input+'.(\n			100;\n			10800;\n			3600;\n			684000;\n			38400;\n			)\n	IN	NS	projecto.pt.\n	IN	A	127.0.0.1'
+	resolv_dns_file = 'search trabalho.pt\nnameserver 127.0.0.1'
 
 def replace_lines():
 	s = open("/etc/named.conf").read()
