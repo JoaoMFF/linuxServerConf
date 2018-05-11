@@ -5,7 +5,7 @@ import os
 def domain_input_zone_forward():
 	global resolv_dns_file, zone_forward, dominio_input, hosts_file
 	
-	dominio_input = 'as.pt'
+	dominio_input = raw_input("Insira o dominio: ")
 	zone_forward = '\nzone '+dominio_input+' IN { \n	type master;\n	file "/var/named/'+dominio_input+'.hosts";\n};'
 	hosts_file = '$TTL 38400\n@	IN	SOA	projecto.pt. mail.'+dominio_input+'.(\n			100;\n			10800;\n			3600;\n			684000;\n			38400;\n			)\n	IN	NS	projecto.pt.\n	IN	A	127.0.0.1'
 	resolv_dns_file = 'search trabalho.pt\nnameserver 127.0.0.1'
