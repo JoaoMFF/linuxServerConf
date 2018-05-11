@@ -12,8 +12,8 @@ def domain_input_zone_forward():
 
 def replace_lines():
 	s = open("/etc/named.conf").read()
-	s = s.replace('listen-on port 53 { 127.0.0.1;};', 'listen-on port 53 { 127.0.0.1; any;};')
-	s = s.replace('allow-query     { localhost;};', 'allow-query     { localhost; any;};')
+	s = s.replace('listen-on port 53 { 127.0.0.1; };', 'listen-on port 53 { 127.0.0.1; any;};')
+	s = s.replace('allow-query     { localhost; };', 'allow-query     { localhost; any;};')
 	f = open("/etc/named.conf", 'w')
 	f.write(s)
 	f.close()
