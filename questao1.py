@@ -47,6 +47,6 @@ if __name__=='__main__':
 	os.system("rpm -qa > installedPackages.txt")
 	packageList = open("installedPackages.txt").read()
 	if "bind" not in packageList:
-		os.system("yum install bind *")
+		os.system("yum install bind* -y")
 	run_scripts()
 	restart_named()
