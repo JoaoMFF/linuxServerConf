@@ -1,7 +1,7 @@
 import os
 import subprocess
 import string 
-from ponto1 import create_zone, create_hosts_file, write_resolv_file,replace_lines, restart_named
+from ponto1 import *
 
 def user_input():
 	global resolv_dns_file, zone_forward, dominio_input, hosts_file, ip_input
@@ -14,7 +14,7 @@ def user_input():
 
 	hosts_file = '$TTL 38400\n@	IN	SOA	projecto.pt. mail.'+dominio_input+'.(\n			100;\n			10800;\n			3600;\n			684000;\n			38400;\n			)\n	IN	NS	projecto.pt.\n	IN	A	'+ip_input
 	
-	resolv_dns_file = 'search trabalho.pt\nnameserver 127.0.0.1'
+	resolv_dns_file = 'search projecto.pt\nnameserver 127.0.0.1'
 
 def config_httpd_conf():
 	portaTCP = raw_input("Insira a porta TCP: ")
