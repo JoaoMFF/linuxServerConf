@@ -1,7 +1,7 @@
 import os
 import subprocess
 import string 
-from questao1 import create_zone, create_hosts_file, write_resolv_file,replace_lines, restart_named
+from ponto1 import create_zone, create_hosts_file, write_resolv_file,replace_lines, restart_named
 
 def user_input():
 	global resolv_dns_file, zone_forward, dominio_input, hosts_file, ip_input
