@@ -1,6 +1,6 @@
 import os
 import subprocess
-from questao1 import *
+from ponto1 import *
 
 def input_register():
 	register_input = raw_input("Tipo de registo (A ou MX): ").upper()
