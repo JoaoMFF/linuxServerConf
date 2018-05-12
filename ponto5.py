@@ -29,6 +29,6 @@ if __name__ == '__main__':
 		os.system("yum install bind* -y")
 	user_input()
 	write_reverse()
-	change_resolv_file(resolv_dns)
+	write_resolv_file(resolv_dns)
 	replace_lines()
 	restart_named()
