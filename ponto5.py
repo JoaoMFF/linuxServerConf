@@ -5,9 +5,9 @@ from ponto1 import *
 
 def user_input():
 	global gama_ip, fqdn, ip, zone, reverse, resolv_dns
-	gama_ip = input("Insira o IP para a zona reverse: ")
-	fqdn = input("Insira o FQDN: ")
-	ip = input("Insira o IP para o FQDN: ")
+	gama_ip = raw_input("Insira o IP para a zona reverse: ")
+	fqdn = raw_input("Insira o FQDN: ")
+	ip = raw_input("Insira o IP para o FQDN: ")
 
 	zone = 'zone "'+gama_ip+'.in-addr.arpa" IN { \n	type master;\n	file "/var/named/reverse.'+fqdn+'";\n};'
 
