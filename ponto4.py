@@ -2,7 +2,10 @@ import os
 import subprocess
 from ponto1 import *
 
+resolv_dns_file = "search trabalho.pt\nnameserver 127.0.0.1"
+
 def input_register():
+	
 	register_input = raw_input("Tipo de registo (A ou MX): ").upper()
 	
 	if register_input not in ('A', 'MX'):
@@ -10,7 +13,6 @@ def input_register():
 		input_register()
 
 def register_type(register):
-
 	if register == 'MX':
    		host = '\n        IN      MX      10      smtp.'+dominio_input
 	elif register == 'A':
