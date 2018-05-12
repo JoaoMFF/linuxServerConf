@@ -3,6 +3,7 @@ import subprocess
 from ponto1 import *
 
 resolv_dns_file = "search trabalho.pt\nnameserver 127.0.0.1"
+zone_forward = '\nzone '+dominio_input+' IN { \n	type master;\n	file "/var/named/'+dominio_input+'.hosts";\n};'
 
 def input_register():
 	
