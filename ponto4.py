@@ -3,7 +3,7 @@ import subprocess
 from ponto1 import *
 
 def user_input():
-	global resolv_dns_file, zone_forward, dominio_input, hosts_file, register_input
+	global resolv_dns_file, zone_forward, dominio_input, hosts_file
 
 	dominio_input = raw_input("Insira o dominio: ")
 
@@ -12,6 +12,7 @@ def user_input():
 	resolv_dns_file = 'search trabalho.pt\nnameserver 127.0.0.1'
 
 def input_register():
+	global register_input
 	register_input = raw_input("Tipo de registo (A ou MX): ").upper()
 	
 	if register_input not in ('A', 'MX'):
