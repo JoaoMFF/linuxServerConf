@@ -3,7 +3,7 @@ import subprocess
 from ponto1 import *
 
 def user_input():
-	global resolv_dns_file, zone_forward, dominio_input, hosts_file
+	global resolv_dns_file, zone_forward, dominio_input, hosts_file, register_input
 
 	dominio_input = raw_input("Insira o dominio: ")
 
