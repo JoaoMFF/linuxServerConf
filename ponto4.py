@@ -2,11 +2,16 @@ import os
 import subprocess
 from ponto1 import *
 
-resolv_dns_file = "search trabalho.pt\nnameserver 127.0.0.1"
-zone_forward = '\nzone '+dominio_input+' IN { \n	type master;\n	file "/var/named/'+dominio_input+'.hosts";\n};'
+def user_input():
+	global resolv_dns_file, zone_forward, dominio_input, hosts_file
+
+	dominio_input = raw_input("Insira o dominio: ")
+
+	zone_forward = '\nzone '+dominio_input+' IN { \n	type master;\n	file "/var/named/'+dominio_input+'.hosts";\n};'
+	hosts_file = '$TTL 38400\n@	IN	SOA	projecto.pt. mail.'+dominio_input+'.(\n			100;\n			10800;\n			3600;\n			684000;\n			38400;\n			)\n	IN	NS	projecto.pt.\n	IN	A	127.0.0.1'
+	resolv_dns_file = 'search trabalho.pt\nnameserver 127.0.0.1'
 
 def input_register():
-	
 	register_input = raw_input("Tipo de registo (A ou MX): ").upper()
 	
 	if register_input not in ('A', 'MX'):
@@ -39,7 +44,7 @@ if __name__=='__main__':
 	if "bind" not in packageList:
 		os.system("yum install bind * -y")
 
-	domain_input_zone_forward()
+	user_input()
 	input_register()
 	replace_lines()
 	write_resolv_file(resolv_dns_file)
