@@ -19,7 +19,7 @@ def delete_zone_forward():
 
 def input_switch():
 
-    selection = input("Insert an option: \n1 - Delete Zone Forward\n2 - Delete Zone Reverse\n3 - Delete VirtualHosts\n")
+    selection = raw_input("Insert an option: \n1 - Delete Zone Forward\n2 - Delete Zone Reverse\n3 - Delete VirtualHosts\n")
     
     if selection == '1':
         delete_zone_forward()
