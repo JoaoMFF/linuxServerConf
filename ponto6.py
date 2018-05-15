@@ -12,7 +12,7 @@ def delete_zone_forward():
         for line in file:
             myfile.write(line.replace(zone_forward, ''))
         else:
-            print("Dominio não encontrado")
+            print("Dominio nao encontrado")
             delete_zone_forward()
 
     os.system("rm -f /var/named/"+dominio_to_delete+".hosts")
