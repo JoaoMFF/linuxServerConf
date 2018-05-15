@@ -5,7 +5,7 @@ import string
 def delete_zone_forward():
     dominio_to_delete = raw_input("Insira  o dominio a eliminar: ")
 
-    zone_forward = '\nzone '+dominio_to_delete+' IN { \n	type master;\n	file "/var/named/'+dominio_input+'.hosts";\n};'
+    zone_forward = '\nzone '+dominio_to_delete+' IN { \n	type master;\n	file "/var/named/'+dominio_to_delete+'.hosts";\n};'
 
     file = open("/etc/named.conf").read()
     with open("/etc/named.conf", "a") as myfile:
