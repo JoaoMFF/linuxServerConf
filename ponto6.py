@@ -9,12 +9,11 @@ def delete_zone_forward():
 
     with open("/etc/named.conf", "rt") as fin:
         with open("/etc/named.conf", "wt") as fout:
-            for line in fin:
-                if dominio_to_delete in line:
-                    fout.write(dominio_to_delete.replace(zone_forward, ' '))
-                else:
-                    print("Dominio nao encontrado")
-                    delete_zone_forward()
+            for dominio_to_delete in fin:
+                fout.write(dominio_to_delete.replace(zone_forward, ' '))
+            else:
+                print("Dominio nao encontrado")
+                delete_zone_forward()
 
     os.system("rm /var/named/"+dominio_to_delete+".hosts")
 
