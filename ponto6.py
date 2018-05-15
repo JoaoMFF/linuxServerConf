@@ -9,8 +9,8 @@ def delete_zone_forward():
 
     file = open("/etc/named.conf").read()
     with open("/etc/named.conf", "a") as myfile:
-        for line in file:
-            myfile.write(line.replace(zone_forward, ''))
+        if dominio_to_delete in file:
+            myfile.write(dominio_to_delete.replace(zone_forward, ''))
         else:
             print("Dominio nao encontrado")
             delete_zone_forward()
