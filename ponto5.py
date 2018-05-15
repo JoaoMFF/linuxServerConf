@@ -20,7 +20,9 @@ def write_reverse():
 	if gama_ip not in file:
 		create_zone(zone, gama_ip)
 
-subprocess.check_call("service named restart".split())
+def create_reverse_fqdn_file(fqdn, reverse):
+	with open('/var/named/reverse.'+fqdn+'', 'w') as myfile:
+		myfile.write(reverse)
 
 if __name__ == '__main__':
 	os.system("rpm -qa > installedPackages.txt")
@@ -30,5 +32,6 @@ if __name__ == '__main__':
 	user_input()
 	write_reverse()
 	write_resolv_file(resolv_dns)
+	create_reverse_fqdn_file(fqdn, reverse)
 	replace_lines()
 	restart_named()

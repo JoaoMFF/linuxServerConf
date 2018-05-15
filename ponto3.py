@@ -22,11 +22,13 @@ def config_httpd_conf():
 	subprocess.check_call("service httpd start".split())
 
 	subprocess.check_call("chkconfig httpd on".split())
-
+	listenTCP = "Listen "+portaTCP+"\n"
 	nameVirtualHost = "NameVirtualHost "+ip_input+":"+portaTCP+"\n"
 	virtualHost = "<VirtualHost "+ip_input+":"+portaTCP+">"
 	file = open("/etc/httpd/conf/httpd.conf").read()
 	with open("/etc/httpd/conf/httpd.conf", "a") as myfile:
+		if listenTCP not in file:	
+			myfile.write(listenTCP)
 		if nameVirtualHost not in file:
 			myfile.write(nameVirtualHost)
 		if virtualHost not in file:
