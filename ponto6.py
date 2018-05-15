@@ -24,11 +24,11 @@ def input_switch():
     if selection == '1':
         delete_zone_forward()
     elif selection == '2':
-        print("Opção a")
+        print("Opcao a")
     elif selection == '3':
-        print("Opção b")
+        print("Opcao b")
     else:
-        print("Input inválido")
+        print("Input invalido")
         input_switch()
 
 if __name__ == '__main__':
