@@ -41,7 +41,7 @@ def option_hide():
     global option_hide_write
     option_hide_write = raw_input("Insira a opcao hide ou nohide: ")
 
-    if option_write not in ('hide', 'nohide'):
+    if option_hide_write not in ('hide', 'nohide'):
         print('Input Invalido')
         option_hide()
 
@@ -51,7 +51,7 @@ def option_sync():
     global option_sync_write
     option_sync_write = raw_input("Insira a opcao sync ou async: ")
 
-    if option_write not in ('sync', 'async'):
+    if option_sync_write not in ('sync', 'async'):
         print('Input Invalido')
         option_sync()  
 
