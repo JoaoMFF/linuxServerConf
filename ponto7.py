@@ -17,8 +17,8 @@ def directory_creation():
     if not os.path.exists(directory):
     		os.makedirs(directory)
 
-    subprocess.check_call("chown 65534.65534 "+directory+"".split())
-    subprocess.check_call("chmod 755 "+directory+"".split())
+    os.system("chown 65534.65534 "+directory+"")
+    os.system("chmod 755 "+directory+"")
 
 def write_exports(direct, ip, mask, optWrite, optHide, optSync):
     export_line = ""+direct+" "+ip+"/"+mask+"("+optWrite+","+optHide+","+optSync+")"
