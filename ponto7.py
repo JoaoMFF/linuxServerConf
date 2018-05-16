@@ -82,7 +82,7 @@ def change_partilha():
 def change_exports(direct, ip, mask, optWrite, optHide, optSync):
     export_to_replace = ""+direct+" "+ip+"/"+mask+"("+optWrite+","+optHide+","+optSync+")"
 
-    for line in fileinput.input('inFile.txt', inplace=True): 
+    for line in fileinput.input('/etc/exports', inplace=True): 
         print (line.rstrip().replace(direct, export_to_replace))
 
 def input_switch():
@@ -110,5 +110,5 @@ if __name__ == '__main__':
     os.system("rpm -qa > installedPackages.txt")
     packageList = open("installedPackages.txt").read()
     if "nfs" not in packageList:
-        os.system("yum install nfs-utils -y")
+        os.system("yum install nfs* -y")
     input_switch()
