@@ -84,8 +84,17 @@ def change_partilha():
 def change_exports(direct, ip, mask, optWrite, optHide, optSync):
     export_to_replace = ""+direct+" "+ip+"/"+mask+"("+optWrite+","+optHide+","+optSync+")"
 
-    for line in fileinput.input('/etc/exports', inplace=True): 
-        print (line.rstrip().replace(direct, export_to_replace))
+    fin = open("/etc/exports", "r")
+    data = fin.readlines()
+    fin.close()
+
+    for i, line in enumerate(data):
+        if directory_to_change in line:
+            del data[i:i+1]
+    
+    fout = open("/etc/exports", "w")
+    fout.writelines(data + export_to_replace)
+    fout.close()
 
 def restart_services():
     subprocess.check_call("service rpcbind restart".split())
