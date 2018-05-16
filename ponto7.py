@@ -58,21 +58,9 @@ def option_sync():
 def delete_partilha():
     dir_to_delete_input = raw_input("Insira a directoria a ser eliminada: ")
 
-    fin = open("/etc/exports", "r")
-    data = fin.readlines()
-    fin.close()
-
-    for i, line in enumerate(data):
-        if dir_to_delete_input in line:
-            del data[i:i+1]
+    delete_line(dir_to_delete_input)
     
-    fout = open("/etc/exports", "w")
-    fout.writelines(data)
-    fout.close()
-
     os.system("rm -r /"+dir_to_delete_input+"/")
-
-    print("Partilha: "+dir_to_delete_input+" eliminada com sucesso!")
 
 def change_partilha():
     global directory_to_change, ip_to_change_input, netmask_to_change_input    
@@ -84,16 +72,25 @@ def change_partilha():
 def change_exports(direct, ip, mask, optWrite, optHide, optSync):
     export_to_replace = ""+direct+" "+ip+"/"+mask+"("+optWrite+","+optHide+","+optSync+")"
 
+    delete_line(directory_to_change)
+
+    file = open("/etc/exports").read()
+    with open("/etc/exports", "a") as myfile:
+        if directory_to_change not in file:
+            myfile.write("\n"+ export_to_replace)
+
+def delete_line(stringToFind):
     fin = open("/etc/exports", "r")
     data = fin.readlines()
     fin.close()
 
     for i, line in enumerate(data):
-        if directory_to_change in line:
+        if stringToFind in line:
             del data[i:i+1]
+            print("sucesso")
     
     fout = open("/etc/exports", "w")
-    fout.writelines(data + export_to_replace)
+    fout.writelines(data)
     fout.close()
 
 def restart_services():
