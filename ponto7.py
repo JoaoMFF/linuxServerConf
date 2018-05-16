@@ -69,16 +69,6 @@ def change_partilha():
     ip_to_change_input = raw_input("Insira o IP da network: ")
     netmask_to_change_input = raw_input("Insira os bits da Netmask: ")
 
-def change_exports(direct, ip, mask, optWrite, optHide, optSync):
-    export_to_replace = ""+direct+" "+ip+"/"+mask+"("+optWrite+","+optHide+","+optSync+")"
-
-    delete_line(directory_to_change)
-
-    file = open("/etc/exports").read()
-    with open("/etc/exports", "a") as myfile:
-        if directory_to_change not in file:
-            myfile.write("\n"+ export_to_replace)
-
 def delete_line(stringToFind):
     fin = open("/etc/exports", "r")
     data = fin.readlines()
@@ -109,7 +99,8 @@ def input_switch():
     elif selection == '2':
         change_partilha()
         options()
-        change_exports(directory_to_change, ip_to_change_input, netmask_to_change_input, option_write, option_hide_write, option_sync_write)
+        delete_line(directory_to_change)
+        write_exports(directory_to_change, ip_to_change_input, netmask_to_change_input, option_write, option_hide_write, option_sync_write)
         restart_services()
     elif selection == '3':
         delete_partilha()
