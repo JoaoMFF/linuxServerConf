@@ -58,7 +58,7 @@ def option_sync():
 def delete_partilha():
     dir_to_delete_input = raw_input("Insira a directoria a ser eliminada: ")
 
-    fin = open("teste.txt", "r")
+    fin = open("/etc/exports", "r")
     data = fin.readlines()
     fin.close()
 
@@ -66,7 +66,7 @@ def delete_partilha():
         if dir_to_delete_input in line:
             del data[i:i+1]
     
-    fout = open("teste.txt", "w")
+    fout = open("/etc/exports", "w")
     fout.writelines(data)
     fout.close()
 
@@ -85,6 +85,10 @@ def change_exports(direct, ip, mask, optWrite, optHide, optSync):
     for line in fileinput.input('/etc/exports', inplace=True): 
         print (line.rstrip().replace(direct, export_to_replace))
 
+def restart_services():
+    subprocess.check_call("service rpcbind restart".split())
+    subprocess.check_call("service nfs restart".split())
+
 def input_switch():
     selection = raw_input("Insira uma opcao: \n1 - Criar partilha\n2 - Alterar partilha\n3 - Eliminar partilha\n")
     
@@ -93,15 +97,15 @@ def input_switch():
         directory_creation()
         options()
         write_exports(directory, ip_input, netmask_input, option_write, option_hide_write, option_sync_write)
-        subprocess.check_call("service nfs restart".split())
+        restart_services
     elif selection == '2':
         change_partilha()
         options()
         change_exports(directory_to_change, ip_to_change_input, netmask_to_change_input, option_write, option_hide_write, option_sync_write)
-        subprocess.check_call("service nfs restart".split())
+        restart_services
     elif selection == '3':
         delete_partilha()
-        subprocess.check_call("service nfs restart".split())
+        restart_services
     else:
         print("Input invalido")
         input_switch()
