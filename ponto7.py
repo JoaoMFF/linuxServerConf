@@ -72,6 +72,8 @@ def delete_partilha():
 
     os.system("rm -r /"+dir_to_delete_input+"/")
 
+    print("Partilha: "+dir_to_delete_input+" eliminada com sucesso!")
+
 def change_partilha():
     global directory_to_change, ip_to_change_input, netmask_to_change_input    
     dir_to_change_input = raw_input("Insira a directoria a ser alterada: ")
@@ -97,15 +99,15 @@ def input_switch():
         directory_creation()
         options()
         write_exports(directory, ip_input, netmask_input, option_write, option_hide_write, option_sync_write)
-        restart_services
+        restart_services()
     elif selection == '2':
         change_partilha()
         options()
         change_exports(directory_to_change, ip_to_change_input, netmask_to_change_input, option_write, option_hide_write, option_sync_write)
-        restart_services
+        restart_services()
     elif selection == '3':
         delete_partilha()
-        restart_services
+        restart_services()
     else:
         print("Input invalido")
         input_switch()
