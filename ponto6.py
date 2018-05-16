@@ -26,7 +26,7 @@ def delete_virtualHost():
     delete_lines_zone(dominio_to_delete)
 
     os.system("rm /var/named/"+dominio_to_delete+".hosts")
-    os.system("rm /"+dominio_to_delete+"/")
+    os.system("rm -r /"+dominio_to_delete+"/")
 
     fin = open("/etc/httpd/conf/httpd.conf", "r")
     data = fin.readlines()
