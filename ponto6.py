@@ -3,7 +3,6 @@
 import os
 import subprocess
 import string 
-import fileinput
 from ponto1 import restart_named
 
 def delete_zone_forward():
@@ -56,7 +55,7 @@ def delete_lines_zone(dominio):
     fout.close()
 
 def input_switch():
-    selection = raw_input("Insert an option: \n1 - Delete Zone Forward\n2 - Delete Zone Reverse\n3 - Delete VirtualHosts\n")
+    selection = raw_input("Insira uma opcao: \n1 - Delete Zone Forward\n2 - Delete Zone Reverse\n3 - Delete VirtualHosts\n")
     
     if selection == '1':
         delete_zone_forward()
