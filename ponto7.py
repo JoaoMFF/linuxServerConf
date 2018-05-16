@@ -29,7 +29,7 @@ def write_exports(direct, ip, mask, optWrite, optHide, optSync):
 
 def options():
     global option_write
-    option_write = raw_input("Insira a opcao rw ou ro: ").lower
+    option_write = raw_input("Insira a opcao rw ou ro: ")
 
     if option_write not in ('rw', 'ro'):
         print('Input Invalido')
@@ -39,7 +39,7 @@ def options():
 
 def option_hide():
     global option_hide_write
-    option_hide_write = raw_input("Insira a opcao hide ou nohide: ").lower
+    option_hide_write = raw_input("Insira a opcao hide ou nohide: ")
 
     if option_write not in ('hide', 'nohide'):
         print('Input Invalido')
@@ -49,7 +49,7 @@ def option_hide():
 
 def option_sync():
     global option_sync_write
-    option_sync_write = raw_input("Insira a opcao sync ou async: ").lower
+    option_sync_write = raw_input("Insira a opcao sync ou async: ")
 
     if option_write not in ('sync', 'async'):
         print('Input Invalido')
