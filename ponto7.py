@@ -13,7 +13,7 @@ def create_user_input():
 
 def directory_creation():
     global directory
-    directory = "/"+dir_input+"/"
+    directory = ""/"+dir_input+"/""
     if not os.path.exists(directory):
     		os.makedirs(directory)
 
@@ -75,7 +75,7 @@ def delete_partilha():
 def change_partilha():
     global directory_to_change, ip_to_change_input, netmask_to_change_input    
     dir_to_change_input = raw_input("Insira a directoria a ser alterada: ")
-    directory_to_change = "/"+dir_to_change_input+"/"
+    directory_to_change = ""/"+dir_to_change_input+"/""
     ip_to_change_input = raw_input("Insira o IP da network: ")
     netmask_to_change_input = raw_input("Insira os bits da Netmask: ")
 
