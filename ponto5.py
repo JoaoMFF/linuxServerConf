@@ -1,3 +1,5 @@
+#Ponto 5
+#João Filipe, 13568
 import os
 import subprocess
 import string 

@@ -1,3 +1,5 @@
+#Ponto 1
+#João Filipe, 13568
 import subprocess
 import string 
 import os
