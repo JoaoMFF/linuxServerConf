@@ -52,3 +52,4 @@ if __name__=='__main__':
 		os.system("yum install bind* -y")
 	run_scripts()
 	restart_named()
+	

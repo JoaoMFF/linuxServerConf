@@ -41,7 +41,7 @@ def create_html_page():
 	directory = "/"+dominio_input+"/"
 	if not os.path.exists(directory):
     		os.makedirs(directory)
-	with open(directory+"/index.html", "w") as myfile:
+	with open(directory+"index.html", "w") as myfile:
 		html = "<html>\n	<body>\n		<h1>Bem vindo a "+dominio_input+"</h1>\n	</body>\n</html>"
 		myfile.write(html)
 	subprocess.check_call("service httpd restart".split())
@@ -64,3 +64,4 @@ if __name__ == '__main__':
 		os.system("yum install httpd* -y")
 	run_scripts()
 	restart_named()
+	
