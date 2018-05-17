@@ -1,3 +1,4 @@
+#
 #Ponto 3
 #Joao Filipe, 13568
 import os

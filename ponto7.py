@@ -1,3 +1,4 @@
+#
 #Ponto 6
 #Joao Filipe, 13568
 import os
@@ -114,4 +115,5 @@ if __name__ == '__main__':
     packageList = open("installedPackages.txt").read()
     if "nfs" not in packageList:
         os.system("yum install nfs* -y")
+    restart_services()
     input_switch()
